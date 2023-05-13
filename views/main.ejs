@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO-app</title>
+    <link rel="stylesheet" href="css/mainPageStyle.css">
+</head>
+<body>
+    <h1 id="todo-heading">TODOS</h1> 
+    <ul id="taskList">
+        <% data.forEach(e=>{ %>
+            <li class=<%=e.completed?"completed":"notDone"%>  onclick="markCompOrNot(this)" >
+                <%=e.task%> <i class="fa-solid fa-trash"></i>
+            </li>
+        <%})%>
+    </ul>
+<!-- making a fetch post on an onsubmit event hence not added the action on the form -->
+    <form method="post">
+        <input type="text" required name="newTask" placeholder="Write your Task" id="newTaskInput">
+        <input type="submit" value="Add Task" id="addNewTaskBtn">
+    </form>
+    <script src="js/static.js"></script>
+    <script src="https://kit.fontawesome.com/e41ece5b99.js" crossorigin="anonymous"></script>
+</body>
+</html>

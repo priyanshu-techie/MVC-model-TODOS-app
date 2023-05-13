@@ -1,0 +1,7 @@
+here i am using the mvc model where i am separating the model(db connection and management)
+, views(the frontend),
+and the controllers(what to do on what), 
+and also the routers (using express.Router(){built-in express middleware}) for handling routes
+ all are separated from each other
+
+and then all the pieces are joined at the server.js file .

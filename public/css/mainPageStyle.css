@@ -1,0 +1,16 @@
+.fa-trash{
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+.completed{
+    text-decoration: line-through;
+    cursor: pointer;
+    color:gray;
+}
+.notDone
+{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
