@@ -11,8 +11,8 @@
     <h1 id="todo-heading">TODOS</h1> 
     <ul id="taskList">
         <% data.forEach(e=>{ %>
-            <li class=<%=e.completed?"completed":"notDone"%>  onclick="markCompOrNot(this)" >
-                <%=e.task%> <i class="fa-solid fa-trash"></i>
+            <li class=<%=e.completed?"completed":"notDone"%> data-id=<%=e._id%> onclick="markCompOrNot(this)" >
+                <%=e.task%> <i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
             </li>
         <%})%>
     </ul>

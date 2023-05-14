@@ -5,6 +5,7 @@ const todoController=require('../controllers/todoController')
 
 router.get('/',todoController.getMainPage);
 router.post('/addNewTask',todoController.addNewTask);
-router.put('/markComplete',todoController.markComplete);
+// router.put('/markComplete',todoController.markComplete);
+router.delete('/deleteTask',todoController.deleteTask);
 
 module.exports=router;
