@@ -21,19 +21,25 @@ form.addEventListener('submit',async function (e){
 });
 
 
-function deleteTask(elem){
+async function deleteTask(elem){
     let idOfTask=elem.parentNode.dataset.id;
-    elem.parentNode.remove();
-
-    fetch('/todos/deleteTask',{
-        method:'DELETE',
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body:JSON.stringify({
-            idFromLiTag:idOfTask
+    try{
+        let resp=await fetch('/todos/deleteTask',{
+            method:'DELETE',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                idFromLiTag:idOfTask
+            })
         })
-    }).then(res=>res.json()).then(d=>console.log(d)).catch(e=>console.error(e));
+        let data=await resp.json();
+        console.log(data);
+        elem.parentNode.remove();
+    }
+    catch(e){
+        console.log(e);
+    }
 
 }
 
