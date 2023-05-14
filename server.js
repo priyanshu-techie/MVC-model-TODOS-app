@@ -26,6 +26,6 @@ app.listen(process.env.PORT,async()=>{
 
 
 
-// on click me db update kro
+// simultaniously edit and then delete krna prevent kro
 // jab bhi li me kuch change kroge, to form submit me jo li insert kr rhe ho usme bhi krna hoga
 // add check mark feature using icons

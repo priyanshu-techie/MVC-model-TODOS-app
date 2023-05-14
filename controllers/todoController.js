@@ -5,7 +5,7 @@ module.exports={
         const items= await Todo.find({});
         res.render('main.ejs',{data:items});
     },
-    
+
     addNewTask:async(req,res)=>{
         try{
             let task=await Todo.create({task:req.body.newTask,completed:false});
@@ -24,5 +24,20 @@ module.exports={
         catch(e){
             console.log(e);
         }
+    },
+    markComplete:async(req,res)=>{
+        let ID=req.body.taskId;
+        let task=await Todo.findById(ID);
+        task.completed=true;
+        task.save();
+        res.json("updated to task complete.");
+    },
+    markIncomplete:async(req,res)=>{
+        let ID=req.body.taskId;
+        let task=await Todo.findById(ID);
+        task.completed=false;
+        task.save();
+        res.json("updated to task complete.");
     }
+
 }
