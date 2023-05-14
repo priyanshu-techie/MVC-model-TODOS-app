@@ -24,7 +24,6 @@ app.listen(process.env.PORT,async()=>{
     console.log(`Server is running at ${process.env.PORT}. Go better catch it.`)
 })
 
-// add the data in span
 // quickly add kr ke delete krne se crash kar ja rha hai 
 // quicly mark and delete se bhi crash kar ja rha 
 // add check mark feature using icons

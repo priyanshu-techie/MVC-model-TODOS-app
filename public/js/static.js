@@ -15,7 +15,7 @@ form.addEventListener('submit',async function (e){
     const data=await res.json();
     console.log(data.message);
     taskList.insertAdjacentHTML("beforeend",`
-    <li class="notDone" data-id=${data.idOfTask} onclick="markCompOrNot(this)"> ${val} <i class="fa-solid fa-trash" onclick="deleteTask(this)"></i></li>
+    <li data-id=${data.idOfTask}><span class="notDone" onclick="markCompOrNot(this)"> ${val} </span><i class="fa-solid fa-trash" onclick="deleteTask(this)"></i></li>
  `)
     taskInput.value="";
 });
@@ -44,7 +44,7 @@ async function deleteTask(elem){
 }
 
 function markCompOrNot(elem){
-    let taskId=elem.dataset.id;
+    let taskId=elem.parentNode.dataset.id;
     if(elem.classList.contains('notDone')){
         elem.classList.remove('notDone');
         elem.classList.add('completed');
