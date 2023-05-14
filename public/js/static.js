@@ -43,6 +43,7 @@ async function deleteTask(elem){
 
 }
 
+
 function markCompOrNot(elem){
     let taskId=elem.parentNode.dataset.id;
     if(elem.classList.contains('notDone')){

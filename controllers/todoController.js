@@ -5,7 +5,6 @@ module.exports={
         const items= await Todo.find({});
         res.render('main.ejs',{data:items});
     },
-
     addNewTask:async(req,res)=>{
         try{
             let task=await Todo.create({task:req.body.newTask,completed:false});
