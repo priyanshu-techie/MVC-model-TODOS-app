@@ -17,7 +17,13 @@
 }
 .fa-square-check{
     color:rgb(18, 168, 53);
+    margin-right: 2rem;
 }
 .fa-square{
     color:red;
+    margin-right: 2rem;
+}
+#taskSpan{
+    width: 12rem;
+    display: inline-block;
 }

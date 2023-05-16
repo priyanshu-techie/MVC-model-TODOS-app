@@ -12,7 +12,7 @@
     <ul id="taskList">
         <% data.forEach(e=>{ %>
             <li data-id=<%=e._id%>>
-                <span class=<%=e.completed?"completed":"notDone"%> onclick="markCompOrNot(this)">
+                <span id="taskSpan" class=<%=e.completed?"completed":"notDone"%> onclick="markCompOrNot(this)">
                      <%=e.task%>
                 </span>
                 <i class=' fa-regular <%=e.completed?"fa-square-check":"fa-square"%>'>

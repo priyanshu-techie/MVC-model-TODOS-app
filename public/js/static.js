@@ -16,7 +16,7 @@ form.addEventListener('submit',async function (e){
     console.log(data.message);
     taskList.insertAdjacentHTML("beforeend",`
     <li data-id=${data.idOfTask}>
-        <span class="notDone" onclick="markCompOrNot(this)"> ${val} </span>
+        <span id="taskSpan" class="notDone" onclick="markCompOrNot(this)"> ${val} </span>
         <i class="fa-regular fa-square"></i>
         <i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
     </li>
