@@ -15,6 +15,9 @@
                 <span class=<%=e.completed?"completed":"notDone"%> onclick="markCompOrNot(this)">
                      <%=e.task%>
                 </span>
+                <i class=' fa-regular <%=e.completed?"fa-square-check":"fa-square"%>'>
+
+                </i>
                 <i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
             </li>
         <%})%>

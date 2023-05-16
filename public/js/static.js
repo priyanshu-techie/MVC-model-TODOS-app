@@ -15,7 +15,11 @@ form.addEventListener('submit',async function (e){
     const data=await res.json();
     console.log(data.message);
     taskList.insertAdjacentHTML("beforeend",`
-    <li data-id=${data.idOfTask}><span class="notDone" onclick="markCompOrNot(this)"> ${val} </span><i class="fa-solid fa-trash" onclick="deleteTask(this)"></i></li>
+    <li data-id=${data.idOfTask}>
+        <span class="notDone" onclick="markCompOrNot(this)"> ${val} </span>
+        <i class="fa-regular fa-square"></i>
+        <i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
+    </li>
  `)
     taskInput.value="";
 });
@@ -49,6 +53,12 @@ function markCompOrNot(elem){
     if(elem.classList.contains('notDone')){
         elem.classList.remove('notDone');
         elem.classList.add('completed');
+
+        // changing the check mark
+        let checkMark=elem.parentNode.childNodes[3];
+        checkMark.classList.remove('fa-square');
+        checkMark.classList.add('fa-square-check');
+
         fetch('/todos/markComplete',{
             method:'put',
             headers:{
@@ -60,6 +70,12 @@ function markCompOrNot(elem){
     else{
         elem.classList.remove('completed');
         elem.classList.add('notDone');
+
+        // changing the checkmark
+        let checkMark=elem.parentNode.childNodes[3];
+        checkMark.classList.remove('fa-square-check');
+        checkMark.classList.add('fa-square');
+
         fetch('/todos/markIncomplete',{
             method:'put',
             headers:{

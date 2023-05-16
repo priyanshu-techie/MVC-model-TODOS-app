@@ -25,5 +25,4 @@ app.listen(process.env.PORT,async()=>{
 })
 
 
-// add check mark feature using icons
-// for click recognition use id to the checkbox
+
