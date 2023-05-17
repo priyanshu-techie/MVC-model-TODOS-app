@@ -4,6 +4,8 @@ const connectDb=require('./configrations/database')
 const homeRoutes=require('./routes/homeRoutes')
 const todoRoutes=require('./routes/todoRoutes');
 
+const PORT =process.env.port||3800;
+
 require('dotenv').config({path:'./configrations/.env'});
 
 app.set('view engine','ejs');
@@ -20,7 +22,7 @@ connectDb();
 // made the connection method as a function and calling it in the server.js file. better than whole code written here.
 
 
-app.listen(process.env.PORT,async()=>{
+app.listen(PORT ,async()=>{
     console.log(`Server is running at ${process.env.PORT}. Go better catch it.`)
 })
 
