@@ -1,9 +1,9 @@
-App live at :
+# App live at :
 https://todo-app-x9ad.onrender.com
 
 This app is not a very safe production app, since here i have not done proper error catching, having enhanced security measures, etc.
 
-Before deploying 
+# Before deploying 
 1. Added 👇 in package.json file 
 
 "engines": {
