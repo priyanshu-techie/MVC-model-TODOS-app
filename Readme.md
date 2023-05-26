@@ -31,6 +31,6 @@ NODE_ENV is used to specify the runtime environment in which your application is
 
 # To run in your local machine:
     * clone the code
-    * do *npm install*
+    * do "npm install"
     * put the database uri you want to connect in .env file
     * do "npm start"
