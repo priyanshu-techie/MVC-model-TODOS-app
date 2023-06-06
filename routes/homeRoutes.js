@@ -16,6 +16,12 @@ function isAuthenticated(req,res,next){
     }
 }
 
+function setCacheControl(req, res, next) {
+    // this is to not store any cache so that the user cant go back after logout
+    res.setHeader('Cache-Control', 'no-store');
+    next();
+}
+
 router.get('/', homeController.getHomePage);
 router.get('/login', isAuthenticated, authController.getLogin);
 router.post('/login',authController.login, passport.authenticate('local', {
@@ -23,7 +29,7 @@ router.post('/login',authController.login, passport.authenticate('local', {
     failureRedirect: '/login'
 }));
 router.post('/logout',authController.logout);
-router.get('/signup', isAuthenticated, authController.getSignUp);
+router.get('/signup', setCacheControl , isAuthenticated, authController.getSignUp);
 router.post('/signup',authController.signUp);
 
 module.exports=router;

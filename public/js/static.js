@@ -7,6 +7,8 @@ form.addEventListener('submit',async function (e){
     e.preventDefault();
     
     const val=taskInput.value;
+    taskInput.value="";
+
     const res=await fetch('/todos/addNewTask',{
         method:'POST',
         headers:{
@@ -26,13 +28,13 @@ form.addEventListener('submit',async function (e){
         <i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
     </li>
  `)
-    taskInput.value="";
 });
 
 
 async function deleteTask(elem){
     let idOfTask=elem.parentNode.dataset.id;
     try{
+        elem.parentNode.remove();
         let resp=await fetch('/todos/deleteTask',{
             method:'DELETE',
             headers:{
@@ -44,7 +46,6 @@ async function deleteTask(elem){
         })
         let data=await resp.json();
         console.log(data);
-        elem.parentNode.remove();
     }
     catch(e){
         console.log(e);

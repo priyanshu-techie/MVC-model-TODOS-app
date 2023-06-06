@@ -1,19 +1,20 @@
-const Todo = require('../model/taskModel')
+const {Todo, TaskModel} = require('../model/taskModel')
 
 module.exports = {
     getMainPage: async (req, res) => {
         const items = await Todo.find({ userId: req.user.id });
         if (!items.length) {
+            // if no elem then give an empty array
             return res.render('main.ejs', { data: [] })
         }
         res.render('main.ejs', { data: items[0].todos });
     },
     addNewTask: async (req, res) => {
         try {
-            const todoItem = {
+            const todoItem =await TaskModel.create({
                 task: req.body.newTask,
                 completed: false
-            }
+            })
 
             // check if any todo exist for the user or not 
             const todo = await Todo.find({ userId: req.user.id });
@@ -36,9 +37,9 @@ module.exports = {
                     ]
                 });
 
-                console.log('New document with subdocuments created:', createdTodo);
+        
             }
-            // check 👇👇 if the id is reaching the frontend or not 
+            // sending the task id to feed to the frontend as it is then used to identify and delte the task
             res.json({
                 idOfTask : todoItem._id,
                 message : "Task Saved to DB"
@@ -49,7 +50,7 @@ module.exports = {
             console.log(e);
         }
     },
-    // while deleting, static.js is doning the task to remove the element from the DOM and controller is just removing from the database
+    // while deleting, static.js is doing the task to remove the element from the DOM and controller is just removing from the database
     deleteTask: async (req, res) => {
         try {
             await Todo.updateOne(
@@ -65,7 +66,7 @@ module.exports = {
 
     markComplete: async (req, res) => {
         let ID = req.body.taskId;
-        task.save(); Todo.updateOne(
+        await Todo.updateOne(
             {
                 userId: req.user.id, // Specify the main document's ID
                 'todos._id': ID // Specify the subdocument's ID within the documents array
@@ -81,7 +82,7 @@ module.exports = {
 
     markIncomplete: async (req, res) => {
         let ID = req.body.taskId;
-        task.save(); Todo.updateOne(
+        await Todo.updateOne(
             {
                 userId: req.user.id, // Specify the main document's ID
                 'todos._id': ID // Specify the subdocument's ID within the documents array

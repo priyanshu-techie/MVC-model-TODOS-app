@@ -9,7 +9,13 @@ function ensureAuth(req, res, next) {
     res.redirect('/login');
 }
 
-router.get('/', ensureAuth, todoController.getMainPage);
+function setCacheControl(req, res, next) {
+    // this is to not store any cache so that the user cant go back after logout
+    res.setHeader('Cache-Control', 'no-store');
+    next();
+}
+
+router.get('/', setCacheControl ,ensureAuth, todoController.getMainPage);
 
 router.post('/addNewTask',todoController.addNewTask);
 
