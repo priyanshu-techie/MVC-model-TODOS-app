@@ -1,5 +1,6 @@
 const Users=  require('../model/userModel');
-const { validatePassword,genPassword }=require('../utilities/passportUtils')
+const { validatePassword,genPassword }=require('../utilities/passportUtils');
+const validator=require('validator');
 
 module.exports={
     getLogin:(req,res)=>{
@@ -7,6 +8,10 @@ module.exports={
     },
     login:async (req,res,next)=>{
         try{
+
+            // this converts the email in correct format, ex= with lowercase without spaces,etc
+            req.body.email = validator.default.normalizeEmail(req.body.email, { gmail_remove_dots: false })
+  
             // i could also have used res.render instead of flash, but lets learn something new 
             const user=await Users.find({ email:req.body.email });
             //if user not found
@@ -44,6 +49,15 @@ module.exports={
             if(req.body.password!==req.body.confirmPassword){
                 return res.render('signup',{err:true,msg:"Password and Confirm Password do not match!"})
             }
+
+            // if password length less that 8 chars
+            if(!validator.default.isLength(req.body.password,{min:8})){
+                return res.render('signup',{err:true,msg:"Password must be minimum 8 characters!"});
+            }
+
+            // this converts the email in correct format, ex= with lowercase without spaces,etc
+            req.body.email = validator.default.normalizeEmail(req.body.email, { gmail_remove_dots: false });
+
             // if(user already exist)
             const user=await Users.find({email:req.body.email});
             if(user.length!=0){
