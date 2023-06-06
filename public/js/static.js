@@ -1,6 +1,8 @@
 const taskInput=document.getElementById('newTaskInput');
 const taskList=document.getElementById('taskList');
-const form = document.querySelector('form');
+const form = document.getElementById('newTaskForm');
+
+// this is to add data to the dom without doing refresh
 form.addEventListener('submit',async function (e){
     e.preventDefault();
     
@@ -14,6 +16,9 @@ form.addEventListener('submit',async function (e){
     })
     const data=await res.json();
     console.log(data.message);
+    //temporary console.log cheking if data recived in frontend or not 
+    console.log(data.idOfTask);
+
     taskList.insertAdjacentHTML("beforeend",`
     <li data-id=${data.idOfTask}>
         <span id="taskSpan" class="notDone" onclick="markCompOrNot(this)"> ${val} </span>

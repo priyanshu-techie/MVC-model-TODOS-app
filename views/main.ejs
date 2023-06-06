@@ -10,25 +10,35 @@
 <body>
     <h1 id="todo-heading">TODOS</h1> 
     <ul id="taskList">
-        <% data.forEach(e=>{ %>
-            <li data-id=<%=e._id%>>
-                <span id="taskSpan" class=<%=e.completed?"completed":"notDone"%> onclick="markCompOrNot(this)">
-                     <%=e.task%>
-                </span>
-                <i class=' fa-regular <%=e.completed?"fa-square-check":"fa-square"%>'>
-
-                </i>
-                <i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
-            </li>
-        <%})%>
+        <%if(data.length){%>
+            <% data.forEach(e=>{ %>
+                <li data-id=<%=e._id%>>
+                    <span id="taskSpan" class=<%=e.completed?"completed":"notDone"%> onclick="markCompOrNot(this)">
+                        <%=e.task%>
+                    </span>
+                    <i class=' fa-regular <%=e.completed?"fa-square-check":"fa-square"%>'>
+                        
+                    </i>
+                    <i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
+                </li>
+                <%})%>
+        <%}%>
     </ul>
 <!-- making a fetch post on an onsubmit event hence not added the action on the form -->
-    <form method="post" action="/todos/addNewTask">
+    <form method="post" action="/todos/addNewTask" id="newTaskForm">
         <input type="text" required name="newTask" placeholder="Write your Task" id="newTaskInput">
         <input type="submit" value="Add Task" id="addNewTaskBtn">
     </form>
+
+
+    <form action="/logout" method="post">
+        <input type="submit" value="LogOut" id="logout_btn">
+    </form>
+
+
     <script src="js/static.js"></script>
     <script src="https://kit.fontawesome.com/e41ece5b99.js" crossorigin="anonymous"></script>
 </body>
+
 
 </html>

@@ -1,8 +1,12 @@
 const express =require('express')
 const app=express();
 const connectDb=require('./configrations/database')
-const homeRoutes=require('./routes/homeRoutes')
+const passport=require('./configrations/passport');
+const homeRoutes=require('./routes/homeRoutes');
 const todoRoutes=require('./routes/todoRoutes');
+const session=require('express-session');
+const flash= require('express-flash');
+const MongoStore = require('connect-mongo');
 
 const PORT =process.env.port||3800;
 
@@ -13,18 +17,29 @@ app.use(express.static(__dirname+'/public'));
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 
+connectDb();
+// made the connection method as a function and calling it in the server.js file. better than whole code written here.
+
+app.use(flash());
+app.use(passport.initialize());
+
+// setting express session
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create( { mongoUrl:process.env.DB_string})
+}));
+
+// setting passport session
+app.use(passport.authenticate('session'));
+
 //routes handling
 app.use('/',homeRoutes);
 app.use('/todos',todoRoutes);
 
 
-connectDb();
-// made the connection method as a function and calling it in the server.js file. better than whole code written here.
-
-
 app.listen(PORT ,async()=>{
-    console.log(`Server is running at ${process.env.PORT}. Go better catch it.`)
+    console.log(`Server is running at ${PORT}. Go better catch it.`)
 })
-
-
-

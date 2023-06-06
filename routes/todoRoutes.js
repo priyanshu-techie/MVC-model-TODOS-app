@@ -2,8 +2,14 @@ const express=require('express');
 const router= express.Router();
 const todoController=require('../controllers/todoController')
 
+function ensureAuth(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login');
+}
 
-router.get('/',todoController.getMainPage);
+router.get('/', ensureAuth, todoController.getMainPage);
 
 router.post('/addNewTask',todoController.addNewTask);
 
