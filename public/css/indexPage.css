@@ -1,0 +1,36 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#cover{
+    background-color: rgb(100, 192, 235);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#cover>h1{
+    color:blue ;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+#dis{
+    color: rgb(255, 255, 8);
+    font-weight: bolder;
+    width: 35%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.log{
+    color:  white;
+    background-color: blue;
+    font-weight: bolder;
+    border-radius: 20%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-decoration: none;
+}

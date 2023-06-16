@@ -18,7 +18,7 @@ function genPassword(plainTextPassword){
     // '3745e48...08d59ae'
 }
 
-function validatePassword(password,salt,hash){
+async function validatePassword(password,salt,hash){
     const checkHash=crypto.pbkdf2Sync(password,salt,10000,64,'sha512').toString('hex');
     return checkHash===hash;
 }

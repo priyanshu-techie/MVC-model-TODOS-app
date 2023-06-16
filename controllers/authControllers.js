@@ -19,8 +19,9 @@ module.exports={
                 req.flash('errors',"Email incorrect, or user doesn't exists");
                 return res.redirect('/login');
             }
+            const passwordCorrect=await validatePassword(req.body.password,user[0].salt,user[0].hash);
             // if password incorrect
-            if(!validatePassword(req.body.password,user[0].salt,user[0].hash)){
+            if(!passwordCorrect){
                 req.flash('errors',"Password incorrect!");
                 return res.redirect('/login');
             }
