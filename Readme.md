@@ -35,6 +35,7 @@ NODE_ENV is used to specify the runtime environment in which your application is
     * clone the code
     * do "npm install"
     * put the database uri you want to connect in .env file
+    * and any SESSION_SECRET in the .env file
     * do "npm start"
 
 NOTE: To make the app safe, have proper error catching at places.
