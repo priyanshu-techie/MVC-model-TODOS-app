@@ -1,9 +1,11 @@
-# App live at :
+# Todo's and Notes app with authentication
+  This app is build on the Model View Controller (MVC) model. 
+  And for authentication, I have implemented the passportJs local strategy.
+
+## App live at :
 https://todo-app-x9ad.onrender.com
 
-This app is not a very safe production app, since here i have not done proper error catching, having enhanced security measures, etc.
-
-# Before deploying 
+## Before deploying 
 1. Added 👇 in package.json file 
 
 "engines": {
@@ -34,3 +36,5 @@ NODE_ENV is used to specify the runtime environment in which your application is
     * do "npm install"
     * put the database uri you want to connect in .env file
     * do "npm start"
+
+NOTE: To make the app safe, have proper error catching at places.
