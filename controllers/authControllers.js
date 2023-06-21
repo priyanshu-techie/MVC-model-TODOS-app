@@ -30,6 +30,7 @@ module.exports={
         }
         catch(e){
             console.log(e);
+            Users.createCollection
             res.redirect('/login');
         }
     },

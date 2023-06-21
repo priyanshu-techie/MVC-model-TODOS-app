@@ -26,6 +26,12 @@ module.exports = {
                     { $push: { todos: todoItem } } // Use $push to add the subdocument to the array
                 )
 
+
+                // we could also do this to update 👇👇
+
+                // todo[0].todos.push(todoItem);
+                // todo[0].save();
+
             }
             else {
                 // creating a new todo 
