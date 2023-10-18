@@ -66,7 +66,7 @@ module.exports={
             }
     
             const passDetails= genPassword(req.body.password);
-            const newUser=await Users.collection.insertOne({name:req.body.username, email:req.body.email, salt:passDetails.salt, hash:passDetails.hash});
+            const newUser=await Users.create({name:req.body.username, email:req.body.email, salt:passDetails.salt, hash:passDetails.hash});
             req.login(newUser, function(err) {
                 if (err) { return next(err); }
                 res.redirect('/todos');
