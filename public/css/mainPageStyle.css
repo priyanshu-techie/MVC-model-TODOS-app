@@ -24,6 +24,15 @@
     margin-right: 2rem;
 }
 #taskSpan{
-    width: 12rem;
-    display: inline-block;
+    width: 20rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+#grid1{
+    grid-column-start: 1;
+    grid-column-end: 12;
+}
+#grid2{
+    grid-column-start: 12;
+    grid-column-end: 13;
 }

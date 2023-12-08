@@ -19,13 +19,17 @@
             <%if(data.length){%>
                 <% data.forEach(e=>{ %>
                     <li data-id=<%=e._id%>>
-                        <span id="taskSpan" class=<%=e.completed?"completed":"notDone"%> onclick="markCompOrNot(this)">
-                            <%=e.task%>
-                        </span>
-                        <i class=' fa-regular <%=e.completed?"fa-square-check":"fa-square"%>'>
-
-                        </i>
-                        <i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
+                        <div style="display: flex;">
+                            <div id="taskSpan" onclick="markCompOrNot(this)">
+                                <div id="grid1" class=<%=e.completed?"completed":"notDone"%>>
+                                    <%=e.task%>
+                                </div>
+                                <div id="grid2">
+                                    <i class=' fa-regular <%=e.completed?"fa-square-check":"fa-square"%>'></i>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
+                        </div>
                     </li>
                     <%})%>
                         <%}%>

@@ -21,20 +21,26 @@ form.addEventListener('submit',async function (e){
     //temporary console.log cheking if data recived in frontend or not 
     console.log(data.idOfTask);
 
-    taskList.insertAdjacentHTML("beforeend",`
-    <li data-id=${data.idOfTask}>
-        <span id="taskSpan" class="notDone" onclick="markCompOrNot(this)"> ${val} </span>
-        <i class="fa-regular fa-square"></i>
+    taskList.insertAdjacentHTML("beforeend",`<li data-id=${data.idOfTask}>
+    <div style="display: flex;">
+        <div id="taskSpan" onclick="markCompOrNot(this)">
+            <div id="grid1" class="notDone">
+                ${val}
+            </div>
+            <div id="grid2">
+                <i class="fa-regular fa-square"></i>
+            </div>
+        </div>
         <i class="fa-solid fa-trash" onclick="deleteTask(this)"></i>
-    </li>
- `)
+    </div>
+   </li>`)
 });
 
 
 async function deleteTask(elem){
-    let idOfTask=elem.parentNode.dataset.id;
+    let idOfTask=elem.parentNode.parentNode.dataset.id;
     try{
-        elem.parentNode.remove();
+        elem.parentNode.parentNode.remove();
         let resp=await fetch('/todos/deleteTask',{
             method:'DELETE',
             headers:{
@@ -55,13 +61,13 @@ async function deleteTask(elem){
 
 
 function markCompOrNot(elem){
-    let taskId=elem.parentNode.dataset.id;
-    if(elem.classList.contains('notDone')){
-        elem.classList.remove('notDone');
-        elem.classList.add('completed');
+    let taskId=elem.parentNode.parentNode.dataset.id;
+    if(elem.childNodes[1].classList.contains('notDone')){
+        elem.childNodes[1].classList.remove('notDone');
+        elem.childNodes[1].classList.add('completed');
 
         // changing the check mark
-        let checkMark=elem.parentNode.childNodes[3];
+        let checkMark=elem.childNodes[3].childNodes[1];
         checkMark.classList.remove('fa-square');
         checkMark.classList.add('fa-square-check');
 
@@ -74,11 +80,11 @@ function markCompOrNot(elem){
         }).catch(e=>{console.log(e)})
     }
     else{
-        elem.classList.remove('completed');
-        elem.classList.add('notDone');
+        elem.childNodes[1].classList.remove('completed');
+        elem.childNodes[1].classList.add('notDone');
 
         // changing the checkmark
-        let checkMark=elem.parentNode.childNodes[3];
+        let checkMark=elem.childNodes[3].childNodes[1];
         checkMark.classList.remove('fa-square-check');
         checkMark.classList.add('fa-square');
 

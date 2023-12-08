@@ -3,26 +3,30 @@
     margin: 0;
     padding: 0;
 }
+body{
+    text-align: center;
+}
 #cover{
-    background: rgb(222,21,190);
-    background: linear-gradient(183deg, rgba(222,21,190,1) 0%, rgba(0,188,255,1) 100%);
+    /* background: rgb(222,21,190);
+    background: linear-gradient(183deg, rgba(222,21,190,1) 0%, rgba(0,188,255,1) 100%); */
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
 #cover>h1{
-    color:rgb(146, 255, 50) ;
+    color:rgb(66, 130, 10) ;
     font-size: 4rem;
     margin-top: 3rem;
     margin-bottom: 2rem;
 }
 #dis{
-    color: rgb(255, 255, 8);
+    color: purple;
     font-weight: bolder;
     font-size: 1.2rem;
-    width: 35%;
+    width: 55%;
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -37,10 +41,25 @@
     padding-bottom: 0.5rem;
     text-decoration: none;
 }
+#testDet{
+    padding: 2rem;
+    border: 3px dotted black;
+}
 .test{
     color:rgb(0, 0, 0) ;
     font-weight: bolder;
 }
 .test>span{
-    color: white;
+    color: purple;
+    font-weight: bolder;
 }
+
+@media all and (max-width:500px) {
+    body{
+        padding: 1rem;
+    }
+    #cover>h1{
+        font-size: 2rem;
+        text-align: center;
+    }
+};
