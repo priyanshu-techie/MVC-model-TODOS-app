@@ -4,7 +4,8 @@
     padding: 0;
 }
 #cover{
-    background-color: rgb(100, 192, 235);
+    background: rgb(222,21,190);
+    background: linear-gradient(183deg, rgba(222,21,190,1) 0%, rgba(0,188,255,1) 100%);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -12,13 +13,15 @@
     flex-direction: column;
 }
 #cover>h1{
-    color:blue ;
+    color:rgb(146, 255, 50) ;
+    font-size: 4rem;
     margin-top: 3rem;
     margin-bottom: 2rem;
 }
 #dis{
     color: rgb(255, 255, 8);
     font-weight: bolder;
+    font-size: 1.2rem;
     width: 35%;
     text-align: center;
     margin-bottom: 2rem;
@@ -33,4 +36,11 @@
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     text-decoration: none;
+}
+.test{
+    color:rgb(0, 0, 0) ;
+    font-weight: bolder;
+}
+.test>span{
+    color: white;
 }
