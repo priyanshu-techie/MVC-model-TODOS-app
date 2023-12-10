@@ -4,22 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Todo App</title>
     <link rel="stylesheet" href="css/indexPage.css">
-    <title>Home page</title>
+    <link rel="shortcut icon" href="https://i.postimg.cc/5NQspdv8/todo.jpg" type="image/x-icon">
 </head>
 <body>
-    <div id="cover">
-        <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Welcome to Your <span> TODO's </span> app.</h1>
-        <p id="dis">A place to note all your todo's and notes. All of which would be saved in the most secure way only you can access</p>
-        <p>Already have an account??</p><br>
-        <a href="/login" class="log">Login ></a>
-        <br>
-        <p>OR</p>
-        <a href="/signup" class="log">SignUp ></a>
-        <p>If new user</p> <br><br><br>
-        <div id="testDet">
-            <div class="test"> Test accout email : <span> test@test.com</span></div>
-            <div class="test"> Test accout password : <span>testtest</span></div>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to YourTodo!</h1>
+            <p>Organize your tasks and boost your productivity with our simple and powerful tool.</p>
+        </div>
+        <div class="login-signup">
+            <div class="login">
+                <h3>Login</h3>
+                <a href="/login">Login</a>
+            </div>
+            <div class="signup">
+                <h3>New here? Sign Up!</h3>
+                <a href="/signup">Sign Up</a>
+            </div>
+        </div>
+        <div class="message">
+            <p>Test User Login: email: test@test.com, password: testtest</p>
         </div>
     </div>
 </body>
